@@ -41,7 +41,7 @@ npm test           # unit tests (Vitest)
 npm run build      # typecheck + production build into dist/
 ```
 
-`dist/` is a set of static files (~30 MB, ~8.6 MB gzipped, the Indigo WASM inlined) that any static web server can host.
+`dist/` is a set of static files that any static web server can host. A first visit downloads about 5 MB (gzipped), mostly Indigo's WASM engine, which is loaded as a separate `.wasm` file (the server must send it as `application/wasm`; GitHub Pages does). A loading screen shows until the editor is ready.
 
 Every push to `main` runs the unit tests, builds, and deploys to GitHub Pages (`.github/workflows/deploy.yml`). This needs the repository's Pages source set to **GitHub Actions** once (Settings → Pages).
 

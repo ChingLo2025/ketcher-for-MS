@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Editor } from 'ketcher-react';
-import { StandaloneStructServiceProvider } from 'ketcher-standalone';
+// The binaryWasm build loads Indigo as a separate .wasm file instead of base64 inside the JS (~40% less to download).
+import { StandaloneStructServiceProvider } from 'ketcher-standalone/dist/binaryWasm';
 import type { Ketcher } from 'ketcher-core';
 import 'ketcher-react/dist/index.css';
 import { startCopy, type CopyKind } from './features/copyActions';

@@ -9,6 +9,10 @@ export default defineConfig({
     'process.env': {},
     global: 'globalThis',
   },
+  // Ketcher's Indigo worker is an ES module (type: 'module') that loads its .wasm via import.meta.url.
+  worker: {
+    format: 'es',
+  },
   test: {
     include: ['tests/unit/**/*.test.ts'],
     environment: 'node',
