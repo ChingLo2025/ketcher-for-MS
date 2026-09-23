@@ -1,0 +1,15 @@
+Structure to PPT (ketcher-for-MS)
+Copyright 2026 ChingLo2025
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes the following software, also licensed under the
+Apache License, Version 2.0:
+
+- Ketcher (ketcher-core, ketcher-react, ketcher-standalone)
+  Copyright EPAM Systems
+  https://github.com/epam/ketcher
+
+- Indigo Toolkit (indigo-ketcher, bundled in ketcher-standalone)
+  Copyright EPAM Systems
+  https://github.com/epam/Indigo

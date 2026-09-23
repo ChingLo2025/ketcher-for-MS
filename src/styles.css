@@ -1,0 +1,12 @@
+html, body, #root { height: 100%; margin: 0; font-family: system-ui, sans-serif; }
+.app { display: flex; flex-direction: column; height: 100%; }
+.toolbar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid #ddd; background: #fafafa; }
+.toolbar button { padding: 6px 14px; font-size: 14px; border: 1px solid #888; border-radius: 4px; background: #fff; cursor: pointer; }
+.toolbar button:hover:not(:disabled) { background: #eef4ff; border-color: #3a6fd8; }
+.toolbar button:disabled { opacity: 0.5; cursor: default; }
+.toolbar kbd { margin-left: 6px; padding: 1px 4px; font: 11px ui-monospace, Consolas, monospace; color: #555; background: #f1f1f1; border: 1px solid #ccc; border-radius: 3px; }
+.scope { margin-left: auto; color: #555; font-size: 13px; }
+.editor { flex: 1; min-height: 0; position: relative; }
+.toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 8px 16px; border-radius: 4px; color: #fff; font-size: 14px; z-index: 1000; }
+.toast-ok { background: #2e7d32; }
+.toast-error { background: #c62828; }

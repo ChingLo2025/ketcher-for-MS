@@ -1,0 +1,35 @@
+{
+  "name": "ketcher-for-ms",
+  "private": true,
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "homepage": "https://chinglo2025.github.io/ketcher-for-MS/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChingLo2025/ketcher-for-MS.git"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "events": "3.3.0",
+    "ketcher-core": "3.18.0",
+    "ketcher-react": "3.18.0",
+    "ketcher-standalone": "3.18.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "@vitejs/plugin-react": "6.1.1",
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "5.0.1"
+  }
+}
