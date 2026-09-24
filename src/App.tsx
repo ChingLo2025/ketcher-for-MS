@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Editor } from 'ketcher-react';
 // The binaryWasm build loads Indigo as a separate .wasm file instead of base64 inside the JS (~40% less to download).
 import { StandaloneStructServiceProvider } from 'ketcher-standalone/dist/binaryWasm';
@@ -6,10 +6,11 @@ import type { Ketcher } from 'ketcher-core';
 import 'ketcher-react/dist/index.css';
 import { startCopy, type CopyKind } from './features/copyActions';
 import { UserFacingError } from './errors';
-import { hasSelection, type Scope } from './ketcher/adapter';
+import { PropertiesCard } from './ui/PropertiesCard';
 import { Toolbar } from './ui/Toolbar';
 import { useCopyShortcuts } from './ui/shortcuts';
 import { Toast, type ToastMessage } from './ui/Toast';
+import { useTargetSummary } from './ui/useTargetSummary';
 
 const structServiceProvider = new StandaloneStructServiceProvider();
 const TOAST_MS = 2500;
@@ -28,7 +29,7 @@ declare global {
 
 export function App() {
   const [ketcher, setKetcher] = useState<Ketcher | null>(null);
-  const [scope, setScope] = useState<Scope>('canvas');
+  const summary = useTargetSummary(ketcher);
   const [toast, setToast] = useState<ToastMessage | null>(null);
   const toastTimer = useRef<number>();
 
@@ -37,13 +38,6 @@ export function App() {
     setToast({ id: Date.now(), kind, text });
     toastTimer.current = window.setTimeout(() => setToast(null), TOAST_MS);
   }, []);
-
-  useEffect(() => {
-    if (!ketcher) return;
-    const handler = () => setScope(hasSelection(ketcher.editor.selection()) ? 'selection' : 'canvas');
-    const subscription = ketcher.editor.subscribe('selectionChange', handler);
-    return () => ketcher.editor.unsubscribe('selectionChange', subscription);
-  }, [ketcher]);
 
   const handleCopy = useCallback(
     (kind: CopyKind) => {
@@ -64,7 +58,7 @@ export function App() {
 
   return (
     <div className="app">
-      <Toolbar disabled={!ketcher} scope={scope} onCopy={handleCopy} />
+      <Toolbar disabled={!ketcher} scope={summary.scope} onCopy={handleCopy} />
       <div className="editor">
         <Editor
           staticResourcesUrl=""
@@ -76,6 +70,7 @@ export function App() {
             setKetcher(instance);
           }}
         />
+        <PropertiesCard summary={summary} />
       </div>
       <Toast message={toast} />
     </div>

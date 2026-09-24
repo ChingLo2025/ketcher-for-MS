@@ -7,6 +7,14 @@ html, body, #root { height: 100%; margin: 0; font-family: system-ui, sans-serif;
 .toolbar kbd { margin-left: 6px; padding: 1px 4px; font: 11px ui-monospace, Consolas, monospace; color: #555; background: #f1f1f1; border: 1px solid #ccc; border-radius: 3px; }
 .scope { margin-left: auto; color: #555; font-size: 13px; }
 .editor { flex: 1; min-height: 0; position: relative; }
+/* Sits inside Ketcher's canvas, clear of its right-hand element bar and bottom template bar. */
+.props-card { position: absolute; right: 56px; bottom: 48px; z-index: 10; pointer-events: none; min-width: 220px; padding: 8px 10px; font-size: 12px; background: rgba(255, 255, 255, 0.94); border: 1px solid #d5dbe5; border-radius: 6px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); }
+.props-card-title { margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #3a6fd8; text-transform: uppercase; letter-spacing: 0.04em; }
+.props-card dl { margin: 0; }
+.props-card-row { display: flex; justify-content: space-between; gap: 16px; line-height: 1.6; }
+.props-card dt { color: #666; }
+.props-card dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+.props-card-error { max-width: 260px; color: #b3261e; }
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 8px 16px; border-radius: 4px; color: #fff; font-size: 14px; z-index: 1000; }
 .toast-ok { background: #2e7d32; }
 .toast-error { background: #c62828; }

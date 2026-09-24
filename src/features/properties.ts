@@ -71,10 +71,19 @@ export function averageMass(composition: Composition): number {
   return sumMasses(composition, 1);
 }
 
-export function formatProperties(composition: Composition): string {
+export type PropertyRow = readonly [label: string, value: string];
+
+/** The three properties as label/value rows; shared by the copied text and the on-screen preview. */
+export function propertyRows(composition: Composition): PropertyRow[] {
   return [
-    `Formula: ${hillFormula(composition)}`,
-    `Monoisotopic Mass: ${monoisotopicMass(composition).toFixed(MASS_DECIMALS)}`,
-    `Average Mass: ${averageMass(composition).toFixed(MASS_DECIMALS)}`,
-  ].join('\n');
+    ['Formula', hillFormula(composition)],
+    ['Monoisotopic Mass', monoisotopicMass(composition).toFixed(MASS_DECIMALS)],
+    ['Average Mass', averageMass(composition).toFixed(MASS_DECIMALS)],
+  ];
+}
+
+export function formatProperties(composition: Composition): string {
+  return propertyRows(composition)
+    .map(([label, value]) => `${label}: ${value}`)
+    .join('\n');
 }

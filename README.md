@@ -23,6 +23,7 @@ Live site: https://chinglo2025.github.io/ketcher-for-MS/
 
 ## Properties
 
+- A card at the bottom right of the canvas previews the three values for the current selection (or the whole canvas) and updates as you edit; it shows exactly what **Copy properties** copies.
 - Formula in Hill order with the net charge appended (`C2H3O2-`, `C2O42-`); all selected atoms form one formula.
 - Partial selections count only the hydrogens the selected atoms carry in the full molecule: selecting aspirin's ring gives `C6H4`, not `C6H6`.
 - A contracted abbreviation (e.g. `OTs`) counts as a whole when any part of it is selected.
